@@ -14,6 +14,9 @@ SCM_HG_CHAR='☿'
 SVN='svn'
 SCM_SVN_CHAR='⑆'
 
+P4='p4'
+SCM_P4_CHAR='#~P'
+
 SCM_NONE_CHAR='○'
 
 RVM_THEME_PROMPT_PREFIX=' |'
@@ -23,6 +26,7 @@ function scm {
   if [[ -d .git ]]; then SCM=$GIT
   elif [[ -d .hg ]]; then SCM=$HG
   elif [[ -d .svn ]]; then SCM=$SVN
+  elif [[ -d .p4change ]]; then SCM=$P4
   else SCM='NONE'
   fi
 }
@@ -32,6 +36,7 @@ function scm_char {
   [[ $SCM == $GIT ]] && echo $SCM_GIT_CHAR && return
   [[ $SCM == $HG ]] && echo $SCM_HG_CHAR && return
   [[ $SCM == $SVN ]] && echo $SCM_SVN_CHAR && return
+  [[ $SCM == $P4 ]] && echo $SCM_P4_CHAR && return
   echo $SCM_NONE_CHAR
 }
 
